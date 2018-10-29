@@ -5,7 +5,7 @@ from sklearn import datasets, linear_model
 from sklearn.metrics import mean_squared_error, r2_score
 
 regr = linear_model.LinearRegression()
-aa=np.load('noisy_sensor_data.npy').item()
+aa=np.load('./data/noisy_sensor_data.npy').item()
 regr.fit(aa['train_input'], aa['train_output'])
 test_output = regr.predict(aa['test_input'])
 

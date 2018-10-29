@@ -99,13 +99,13 @@ def run(ratio):
 	loss_main = loss_l2 + loss_l1
 
 	## OPTIMIZER ## note: both optimizer and learning rate is not found in the paper
-	main_optimizer = tf.train.AdamOptimizer(1e-3, beta1=0.5)
+	main_optimizer = tf.train.AdamOptimizer(1e-2, beta1=0.5)
 	enc_vars = tf.get_collection(tf.GraphKeys.VARIABLES, scope='enc')
 	dec_vars = tf.get_collection(tf.GraphKeys.VARIABLES, scope='dec')
 	ppn_vars = tf.get_collection(tf.GraphKeys.VARIABLES, scope='ppn')
 	main_grads = main_optimizer.compute_gradients(loss_main, enc_vars+dec_vars)
 	main_train_op = main_optimizer.apply_gradients(main_grads)
-	ppn_optimizer = tf.train.AdamOptimizer(1e-4, beta1=0.5)
+	ppn_optimizer = tf.train.AdamOptimizer(1e-3, beta1=0.5)
 	ppn_grads = ppn_optimizer.compute_gradients(loss_mag, ppn_vars)
 	ppn_train_op = ppn_optimizer.apply_gradients(ppn_grads)
 	train_op = tf.group(main_train_op, ppn_train_op)

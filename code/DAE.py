@@ -7,74 +7,15 @@ import tensorflow as tf
 import tensorflow.contrib.slim as slim
 
 def run(ratio):
-	data_dir = './Data'
-	noisy_data_1 = np.load('ch1_data.npy')[:,:,0] #noisy signal, totally off
-	noisy_data_2 = np.load('ch2_data.npy')[:,:,0] #noisy signal
-	#noisy_data = np.concatenate([noisy_data_1[:330], noisy_data_2[330:]], 0)
-	noisy_data = noisy_data_2
-	good_data = np.load('ch3_data.npy')[:,:,0] #good signal
-	input_data = []
-	output_data = []
-	max_val = []
-	min_val = []
-	for i, data_i in enumerate(noisy_data):
-		# normalize with training data
-		max_val += [np.max(data_i)]
-		min_val += [np.min(data_i)]
-		input_data += [(data_i-np.min(data_i))/(np.max(data_i)-np.min(data_i))]
-		output_data += [(good_data[i]-np.min(data_i))/(np.max(data_i)-np.min(data_i))]
-	if 0:
-		test_input = []
-		test_output = []
-		train_input = []
-		train_output = []
-		train_min = []
-		train_max = []
-		test_min = []
-		test_max = []
-		for i in range(len(input_data)):
-			if i%5:
-				train_input += [input_data[i]]
-				train_output += [output_data[i]]
-				train_min += [min_val[i]]
-				train_max += [max_val[i]]
-			else:
-				test_input += [input_data[i]]
-				test_output += [output_data[i]]
-				test_min += [min_val[i]]
-				test_max += [max_val[i]]
-		test_input = np.asarray(test_input)
-		test_output = np.asarray(test_output)
-		train_input = np.asarray(train_input)
-		train_output = np.asarray(train_output)
-		test_min = np.asarray(test_min)
-		test_max = np.asarray(test_max)
-		train_min = np.asarray(train_min)
-		train_max = np.asarray(train_max)
-	else:
-		dataset_size = len(output_data)
-		training_size = int(ratio*dataset_size)
-		print('training data amount: {}, ratio: {}'.format(training_size, ratio))
-		idx = np.arange(dataset_size)
-		np.random.shuffle(idx)
-		output_data = np.asarray(output_data)
-		input_data = np.asarray(input_data)
-		min_val = np.asarray(min_val)
-		max_val = np.asarray(max_val)
-		train_output = output_data[idx[:training_size]]
-		test_output = output_data[idx[training_size:]]
-		train_input = input_data[idx[:training_size]]
-		test_input = input_data[idx[training_size:]]
-		train_min = min_val[idx[:training_size]]
-		train_max = max_val[idx[:training_size]]
-		test_min = min_val[idx[training_size:]]
-		test_max = max_val[idx[training_size:]]
 
-
+	input_data =np.load('./data/noisy_sensor_data.npy').item()
+	test_input = input_data['test_input']
+	test_output = input_data['test_output']
+	train_input = input_data['train_input']
+	train_output = input_data['train_output']
 
 	batch_size = 16
 	num_time_steps = 3000
-	dim_out = 1
 	input_pl = tf.placeholder(tf.float32, [batch_size, num_time_steps])
 	output_pl = tf.placeholder(tf.float32, [batch_size, num_time_steps])
 	net = {}
@@ -147,6 +88,17 @@ def run(ratio):
 
 		print(eq_i, np.mean(ave_loss_l1_val_train), np.mean(ave_loss_l1_val_test), np.mean(ave_loss_l2_val_train), np.mean(ave_loss_l2_val_test))
 
+		er1 = []
+		er2 = []
+		for j in range(10):
+			input_data_val = test_input[j * batch_size:(j + 1) * batch_size]
+			denoised_data_val = sess.run(net['denoised'], {input_pl: input_data_val})
+			reference_data_val = test_output[j * batch_size:(j + 1) * batch_size]
+			er1 += [np.abs(np.max(denoised_data_val - reference_data_val, 1)) / np.max(reference_data_val, 1)]
+			er2 += [np.sum(np.abs(denoised_data_val - reference_data_val), 1) / np.max(reference_data_val, 1)]
+		print(np.mean(er1), np.mean(er2))
+
+
 	plt.figure()
 	plt.subplot(2,1,1)
 	plt.plot(train_loss_l2_val_hist[3:], label='training l2 loss')
@@ -165,36 +117,6 @@ def run(ratio):
 	denoised_data_val = sess.run(net['denoised'], {input_pl: input_data_val})
 	reference_data_val = test_output[i*batch_size:(i+1)*batch_size]
 
-	if 1:
-		test_max_val = np.expand_dims(test_max[i*batch_size:(i+1)*batch_size], 1)
-		test_min_val = np.expand_dims(test_min[i*batch_size:(i+1)*batch_size], 1)
-		input_data_val = (input_data_val) * (test_max_val - test_min_val)  + test_min_val
-		residual_data_val = (residual_data_val) * (test_max_val - test_min_val)  + test_min_val
-		denoised_data_val = (denoised_data_val) * (test_max_val - test_min_val)  + test_min_val
-		reference_data_val = (reference_data_val) * (test_max_val - test_min_val)  + test_min_val
-
-	np.save('input_data_val_ch2.npy', input_data_val)
-	np.save('output_data_val_ch2.npy', reference_data_val)
-	np.save('denoised_data_val_ch2.npy', denoised_data_val)
-
-	for idx in range(5):
-		plt.figure(figsize=(7,15))
-		plt.subplot(5,1,1)
-		plt.plot(input_data_val[idx],label='bad sensor')
-		plt.legend()
-		plt.subplot(5,1,2)
-		plt.plot(residual_data_val[idx], label='residual sensor')
-		plt.legend()
-		plt.subplot(5,1,3)
-		plt.plot(denoised_data_val[idx], label='denoised signal')
-		plt.legend()
-		plt.subplot(5,1,4)
-		plt.plot(reference_data_val[idx], label='good sensor')
-		plt.legend()
-		plt.subplot(5,1,5)
-		plt.plot(reference_data_val[idx]-denoised_data_val[idx], label='error')
-		plt.legend()
-	plt.show()
 
 if __name__ == '__main__':
 	# for ratio in range(0.,1,10):
