@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-input_data = np.load('./data/noisy_sensor_data.npy').item()
+input_data = np.load('./data/noisy_sensor_data.npy', encoding='latin1').item()
 test_input = input_data['test_input']
 test_output = input_data['test_output']
 train_input = input_data['train_input']
