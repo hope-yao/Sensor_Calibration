@@ -8,7 +8,7 @@ import tensorflow.contrib.slim as slim
 
 def run(ratio):
 
-	input_data =np.load('./data/noisy_sensor_data.npy').item()
+	input_data =np.load('./data/noisy_sensor_data.npy', encoding='latin1').item()
 	test_input = input_data['test_input']
 	test_output = input_data['test_output']
 	train_input = input_data['train_input']
@@ -62,7 +62,7 @@ def run(ratio):
 	print(train_input.shape, test_input.shape)
 	for eq_i in range(max_epoch):
 		# training data, for optimization
-		num_itr = train_input.shape[0] / batch_size
+		num_itr = int(train_input.shape[0] / batch_size)
 		ave_loss_l1_val_train = []
 		ave_loss_l2_val_train = []
 		for i in range(num_itr):
