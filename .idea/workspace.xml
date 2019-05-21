@@ -1,17 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="23d50f0b-25d4-467e-a686-afb3148e13ac" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/PCA.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/code/DAE_PPN_sig.py" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/code/DAE.py" afterPath="$PROJECT_DIR$/code/DAE.py" />
-      <change beforePath="$PROJECT_DIR$/code/DAE_twobranches.py" afterPath="$PROJECT_DIR$/code/DAE_PPN.py" />
-      <change beforePath="$PROJECT_DIR$/code/comp.py" afterPath="$PROJECT_DIR$/code/comp.py" />
+    <list default="true" id="23d50f0b-25d4-467e-a686-afb3148e13ac" name="Default" comment="DAE_PPN">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/band_width/DAE_PPN_bandwidth.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/band_width/band_width_correction.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/script/DAE_PPN_PCA.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/script/DAE_PPN_PCA_repair.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/script/DAE_PPN_rnn_repair.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/script/DAE_downsample.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/script/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PCA.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/DAE-deeper.py" beforeDir="false" afterPath="$PROJECT_DIR$/script/DAE-deeper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/DAE-shallower.py" beforeDir="false" afterPath="$PROJECT_DIR$/script/DAE-shallower.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/DAE.py" beforeDir="false" afterPath="$PROJECT_DIR$/script/DAE.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/DAE_PPN.py" beforeDir="false" afterPath="$PROJECT_DIR$/script/DAE_PPN.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/DAE_PPN_sig.py" beforeDir="false" afterPath="$PROJECT_DIR$/script/DAE_PPN_sig.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/DAE_conv1d.py" beforeDir="false" afterPath="$PROJECT_DIR$/script/DAE_conv1d.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/DAE_dropout.py" beforeDir="false" afterPath="$PROJECT_DIR$/script/DAE_dropout.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/DAE_raw.py" beforeDir="false" afterPath="$PROJECT_DIR$/script/DAE_raw.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/DAE_rnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/script/DAE_rnn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/DAE_weighted.py" beforeDir="false" afterPath="$PROJECT_DIR$/script/DAE_weighted.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/comp.py" beforeDir="false" afterPath="$PROJECT_DIR$/script/comp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/preprocess.py" beforeDir="false" afterPath="$PROJECT_DIR$/script/preprocess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/visualization.py" beforeDir="false" afterPath="$PROJECT_DIR$/script/visualization.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,80 +37,83 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="session.py" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/script/DAE_PPN.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="16" column="46" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/tensorflow/python/client/session.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20412">
-              <caret line="1151" column="0" lean-forward="false" selection-start-line="1151" selection-start-column="0" selection-end-line="1151" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="216">
+              <caret line="1301" selection-start-line="1301" selection-end-line="1301" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DAE_PPN.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/DAE_PPN.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/DAE_downsample.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="107" column="47" lean-forward="false" selection-start-line="107" selection-start-column="47" selection-end-line="107" selection-end-column="47" />
-              <folding>
-                <element signature="e#0#22#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="330">
+              <caret line="54" column="24" lean-forward="true" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DAE.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/DAE.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/comp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="20" column="12" lean-forward="false" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
-              <folding>
-                <element signature="e#0#22#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="360">
+              <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="comp.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/code/comp.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/band_width/band_width_correction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="21" column="39" lean-forward="true" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1386">
+              <caret line="77" selection-start-line="77" selection-end-line="77" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PCA.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PCA.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="19" column="10" lean-forward="false" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="npyio.py" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/numpy/lib/npyio.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="383" column="0" lean-forward="false" selection-start-line="383" selection-start-column="0" selection-end-line="383" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="6462">
+              <caret line="383" selection-start-line="383" selection-end-line="383" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DAE_PPN_sig.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/DAE_PPN_sig.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/band_width/DAE_PPN_bandwidth.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="5634">
+              <caret line="316" column="60" selection-start-line="316" selection-start-column="60" selection-end-line="316" selection-end-column="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/numpy/core/numeric.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="9000">
+              <caret line="500" selection-start-line="500" selection-end-line="500" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/tensorflow/python/ops/variable_scope.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="12924">
+              <caret line="741" selection-start-line="741" selection-end-line="741" />
             </state>
           </provider>
         </entry>
@@ -108,31 +129,41 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>dir_ij</find>
-      <find>plt</find>
-      <find>log10</find>
-      <find>test</find>
-      <find>input_data_val_ch2</find>
-      <find>mag</find>
-      <find>test_min_val</find>
-      <find>test_loss_mag_val_hist</find>
-      <find>train_input_min</find>
-      <find>dim_out</find>
-      <find>ave_loss_l1_val_train</find>
-      <find>net['mag']</find>
-      <find>2</find>
-      <find>output_mag_pl</find>
-      <find>train_input_mag</find>
-      <find>loss_mag</find>
-      <find>train_output</find>
-      <find>input_mag_pl</find>
       <find>denoised_data_val</find>
-      <find>noisy_sensor_data</find>
+      <find>train</find>
+      <find>input_sig_pl</find>
+      <find>1</find>
+      <find>it</find>
+      <find>30`</find>
+      <find>INPUT_WIDTH</find>
+      <find>output_width_pl</find>
+      <find>batch</find>
+      <find>bpn3</find>
+      <find>300</find>
+      <find>3</find>
+      <find>30</find>
+      <find>z</find>
+      <find>-4</find>
+      <find>100</find>
+      <find>200</find>
+      <find>fc21</find>
+      <find>BROKEN</find>
+      <find>input_pl</find>
+      <find>pl</find>
+      <find>10</find>
+      <find>epoch</find>
+      <find>ratio</find>
       <find>print</find>
-      <find>denoised</find>
-      <find>max_val</find>
-      <find>test_max</find>
+      <find>loss</find>
+      <find>test_loss_l1_val_hist</find>
+      <find>set</find>
+      <find>MomentumOptimizer</find>
+      <find>3000</find>
     </findStrings>
+    <replaceStrings>
+      <replace>tab</replace>
+      <replace>\tab</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -146,36 +177,38 @@
         <option value="$PROJECT_DIR$/comp.py" />
         <option value="$PROJECT_DIR$/DAE_twobranches.py" />
         <option value="$PROJECT_DIR$/DAE_raw.py" />
-        <option value="$PROJECT_DIR$/code/DAE_PPN_sig.py" />
-        <option value="$PROJECT_DIR$/PCA.py" />
         <option value="$PROJECT_DIR$/code/comp.py" />
         <option value="$PROJECT_DIR$/code/DAE.py" />
+        <option value="$PROJECT_DIR$/code/DAE_PPN_sig.py" />
+        <option value="$PROJECT_DIR$/code/DAE_downsample.py" />
+        <option value="$PROJECT_DIR$/PCA.py" />
+        <option value="$PROJECT_DIR$/code/DAE_PPN_PCA.py" />
         <option value="$PROJECT_DIR$/code/DAE_PPN.py" />
+        <option value="$PROJECT_DIR$/code/DAE_PPN_rnn_repair.py" />
+        <option value="$PROJECT_DIR$/DAE_PPN_PCA_preair.py" />
+        <option value="$PROJECT_DIR$/code/DAE_PPN_PCA_repair.py" />
+        <option value="$PROJECT_DIR$/script/DAE_PPN_PCA_repair.py" />
+        <option value="$PROJECT_DIR$/data/band_width/band_width_correction.py" />
+        <option value="$PROJECT_DIR$/data/band_width/DAE_PPN_bandwidth.py" />
+        <option value="$PROJECT_DIR$/script/DAE_downsample.py" />
+        <option value="$PROJECT_DIR$/SPL_plots.py" />
+        <option value="$PROJECT_DIR$/script/DAE_PPN.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="64" />
+    <option name="x" value="1984" />
     <option name="y" value="-4" />
     <option name="width" value="1857" />
     <option name="height" value="1085" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -186,22 +219,32 @@
             <path>
               <item name="Sensor_Calibration" type="b2602c69:ProjectViewProjectNode" />
               <item name="Sensor_Calibration" type="462c0819:PsiDirectoryNode" />
-              <item name="code" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Sensor_Calibration" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Sensor_Calibration" type="462c0819:PsiDirectoryNode" />
+              <item name="script" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../FEA_Net" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data/band_width" />
+      <recent name="$PROJECT_DIR$/code" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data/band_width" />
       <recent name="$PROJECT_DIR$/code" />
     </key>
   </component>
@@ -217,8 +260,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.DAE_twobranches">
-    <configuration name="DAE" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.DAE_PPN">
+    <configuration name="DAE_PPN" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true">
+      <module name="Sensor_Calibration" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -229,14 +273,18 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Sensor_Calibration" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/DAE.py" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/script/DAE_PPN.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
-    <configuration name="DAE_PPN_sig" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="DAE_PPN_bandwidth" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Sensor_Calibration" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -247,14 +295,18 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Sensor_Calibration" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/DAE_PPN_sig.py" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data/band_width/DAE_PPN_bandwidth.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
-    <configuration name="DAE_twobranches" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="DAE_downsample (1)" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true">
+      <module name="Sensor_Calibration" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -265,14 +317,18 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Sensor_Calibration" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/DAE_PPN.py" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/script/DAE_downsample.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
-    <configuration name="PCA" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="SPL_plots" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Sensor_Calibration" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -283,30 +339,54 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Sensor_Calibration" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PCA.py" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SPL_plots.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
-    <list size="4">
-      <item index="0" class="java.lang.String" itemvalue="Python.DAE_twobranches" />
-      <item index="1" class="java.lang.String" itemvalue="Python.DAE_PPN_sig" />
-      <item index="2" class="java.lang.String" itemvalue="Python.DAE" />
-      <item index="3" class="java.lang.String" itemvalue="Python.PCA" />
+    <configuration name="band_width_correction" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Sensor_Calibration" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data/band_width" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data/band_width/band_width_correction.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.DAE_downsample (1)" />
+      <item itemvalue="Python.DAE_PPN_bandwidth" />
+      <item itemvalue="Python.band_width_correction" />
+      <item itemvalue="Python.SPL_plots" />
+      <item itemvalue="Python.DAE_PPN" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Python.DAE_twobranches" />
-        <item index="1" class="java.lang.String" itemvalue="Python.DAE" />
-        <item index="2" class="java.lang.String" itemvalue="Python.PCA" />
-        <item index="3" class="java.lang.String" itemvalue="Python.DAE_PPN_sig" />
+      <list>
+        <item itemvalue="Python.DAE_PPN" />
+        <item itemvalue="Python.SPL_plots" />
+        <item itemvalue="Python.DAE_downsample (1)" />
+        <item itemvalue="Python.band_width_correction" />
+        <item itemvalue="Python.DAE_PPN_bandwidth" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -318,31 +398,55 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1538435183742</updated>
+      <workItem from="1557804625546" duration="832000" />
+      <workItem from="1557805918429" duration="676000" />
+      <workItem from="1557806625014" duration="98000" />
+      <workItem from="1557806885468" duration="1797000" />
+      <workItem from="1557854250587" duration="1219000" />
+      <workItem from="1557858779645" duration="10399000" />
     </task>
+    <task id="LOCAL-00001" summary="fine tun">
+      <created>1540855449484</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1540855449484</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="15021000" />
+  </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-4" width="1857" height="1085" extended-state="6" />
+    <frame x="1984" y="-4" width="1857" height="1085" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19453552" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31179488" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32923076" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2851282" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968128" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.46666667" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16288088" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.20758483" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.29041916" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32934132" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.48203593" />
+      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="12" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info active="true" anchor="right" id="SciView" order="4" visible="true" weight="0.44044322" />
     </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -369,152 +473,202 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fine tun" />
+    <option name="LAST_COMMIT_MESSAGE" value="fine tun" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/code/DAE_PPN.py</url>
-          <line>208</line>
+          <url>file://$PROJECT_DIR$/script/DAE_PPN.py</url>
+          <line>223</line>
           <option name="timeStamp" value="50" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/script/DAE_PPN_rnn_repair.py</url>
+          <line>193</line>
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/script/DAE_PPN.py</url>
+          <line>202</line>
+          <option name="timeStamp" value="89" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/data/band_width/DAE_PPN_bandwidth.py</url>
+          <line>330</line>
+          <option name="timeStamp" value="98" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="51" />
     </breakpoint-manager>
-    <watches-manager />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Sensor_Calibration$DAE_PPN.coverage" NAME="DAE_PPN Coverage Results" MODIFIED="1558464547073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
       <expression>
-        <expression-string>np.sum(np.abs(denoised_data_val - reference_data_val), 1) / np.max(reference_data_val, 1)</expression-string>
+        <expression-string># plt.subplot(3,1,1)
+idx = 11
+plt.figure(dpi=300)
+plt.plot(input_data['test_input'][idx,400:1000], label='original')
+plt.legend()
+plt.figure(dpi=300)
+plt.plot(denoised_data_val[idx,400:1000],label='denoised')
+plt.legend()
+plt.figure(dpi=300)
+plt.plot(reference_data_val[idx,400:1000],label='reference')
+plt.legend()
+plt.show()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>np.abs(np.max(denoised_data_val - reference_data_val, 1)) / np.max(reference_data_val, 1)</expression-string>
+        <expression-string>for idx in range(5):
+	plt.figure(figsize=(7, 15))
+	plt.subplot(5, 1, 1)
+	plt.plot(input_data_val[idx], label='bad sensor')
+	plt.legend()
+	plt.subplot(5, 1, 2)
+	# plt.plot(residual_data_val[idx], label='residual sensor')
+	plt.legend()
+	plt.subplot(5, 1, 3)
+	plt.plot(denoised_data_val[idx], label='denoised signal')
+	plt.legend()
+	plt.subplot(5, 1, 4)
+	plt.plot(reference_data_val[idx], label='good sensor')
+	plt.legend()
+	plt.subplot(5, 1, 5)
+	plt.plot(reference_data_val[idx] - denoised_data_val[idx], label='error')
+	plt.legend()
+plt.show()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>np.abs(np.max(denoised_data_val - reference_data_val, 1))</expression-string>
+        <expression-string># plt.subplot(3,1,1)
+idx = 10
+plt.figure(dpi=300)
+plt.plot(input_data['test_input'][idx,400:1000], label='original')
+plt.legend()
+plt.figure(dpi=300)
+plt.plot(denoised_data_val[idx,400:1000],label='denoised')
+plt.legend()
+plt.figure(dpi=300)
+plt.plot(reference_data_val[idx,400:1000],label='reference')
+plt.legend()
+plt.show()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>np.abs(np.max(denoised_data_val - reference_data_val), 1)</expression-string>
+        <expression-string># plt.subplot(3,1,1)
+plt.figure(dpi=300)
+idx = 10
+plt.plot(input_data['test_input'][idx,400:1000], label='original')
+plt.plot(denoised_data_val[idx,400:1000],label='denoised')
+plt.plot(reference_data_val[idx,400:1000],label='reference')
+plt.legend()
+plt.show()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>reference_data_val</expression-string>
+        <expression-string># plt.subplot(3,1,1)
+plt.figure(dpi=300)
+plt.plot(input_data['test_input'][0,400:1000], label='original')
+plt.plot(denoised_data_val[0,400:1000],label='denoised')
+plt.plot(reference_data_val[0,400:1000],label='reference')
+plt.legend()
+plt.show()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>denoised_data_val</expression-string>
+        <expression-string># plt.subplot(3,1,1)
+plt.figure(figsize=(10,8))
+plt.plot(input_data['test_input'][0,400:1000], label='original')
+plt.plot(denoised_data_val[0,400:1000],label='denoised')
+plt.plot(reference_data_val[0,400:1000],label='reference')
+plt.legend()
+plt.show()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>np.abs(np.max(denoised_data_val - reference_data_val), 1) / np.max(reference_data_val, 1)</expression-string>
+        <expression-string># plt.subplot(3,1,1)
+plt.figure(figsize=(8,8))
+plt.plot(input_data['test_input'][0,400:1000], label='original')
+plt.plot(denoised_data_val[0,400:1000],label='denoised')
+plt.plot(reference_data_val[0,400:1000],label='reference')
+plt.legend()
+plt.show()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>input_data_val = test_input[i * batch_size:(i + 1) * batch_size]
-denoised_data_val = sess.run(net['denoised'], {input_pl: input_data_val})
-reference_data_val = test_output[i * batch_size:(i + 1) * batch_size]
-# er1 += [np.abs(np.max(denoised_data_val - reference_data_val), 1) / np.max(reference_data_val, 1)]
-# er2 += [np.sum(np.abs(denoised_data_val - reference_data_val), 1) / np.max(reference_data_val, 1)]</expression-string>
+        <expression-string># plt.subplot(3,1,1)
+plt.plot(input_data['test_input'][0,400:1000], label='original')
+plt.plot(denoised_data_val[0,400:1000],label='denoised')
+plt.plot(reference_data_val[0,400:1000],label='reference')
+plt.legend()
+plt.show()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>input_data_val = test_input[i * batch_size:(i + 1) * batch_size]
-denoised_data_val = sess.run(net['denoised'], {input_pl: input_data_val})
-reference_data_val = test_output[i * batch_size:(i + 1) * batch_size]
-er1 += [np.abs(np.max(denoised_data_val - reference_data_val), 1) / np.max(reference_data_val, 1)]
-er2 += [np.sum(np.abs(denoised_data_val - reference_data_val), 1) / np.max(reference_data_val, 1)]</expression-string>
+        <expression-string>input_data =np.load('./data/noisy_sensor_data.npy').item()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>er1 = []
-er2 = []</expression-string>
+        <expression-string># plt.subplot(3,1,1)
+# plt.plot(input_data['test_input'][0,400:1000])
+plt.plot(denoised_data_val[0,400:1000],label='denoised')
+plt.plot(reference_data_val[0,400:1000],label='reference')
+plt.legend()
+plt.show()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
     </expressions>
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>sess.run(net['bpn1'],feed_dict_train)[3].tolist()</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/DAE_raw.py" />
-    <entry file="file://$PROJECT_DIR$/DAE_raw.py" />
-    <entry file="file://$PROJECT_DIR$/DAE.py" />
-    <entry file="file://$PROJECT_DIR$/preprocess.py" />
-    <entry file="file://$PROJECT_DIR$/comp.py" />
-    <entry file="file://$PROJECT_DIR$/conergence_ch2_split0.2.png" />
-    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/tensorflow/python/client/session.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20412">
-          <caret line="1151" column="0" lean-forward="false" selection-start-line="1151" selection-start-column="0" selection-end-line="1151" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAE_twobranches.py" />
-    <entry file="file://$PROJECT_DIR$/preprocess.py" />
-    <entry file="file://$PROJECT_DIR$/DAE.py" />
-    <entry file="file://$PROJECT_DIR$/DAE_raw.py" />
-    <entry file="file://$PROJECT_DIR$/comp.py" />
-    <entry file="file://$PROJECT_DIR$/conergence_ch2_split0.2.png" />
-    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/tensorflow/python/client/session.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20412">
-          <caret line="1151" column="0" lean-forward="false" selection-start-line="1151" selection-start-column="0" selection-end-line="1151" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAE_twobranches.py" />
-    <entry file="file://$PROJECT_DIR$/DAE.py" />
-    <entry file="file://$PROJECT_DIR$/preprocess.py" />
-    <entry file="file://$PROJECT_DIR$/DAE_raw.py" />
-    <entry file="file://$PROJECT_DIR$/comp.py" />
-    <entry file="file://$PROJECT_DIR$/conergence_ch2_split0.2.png" />
-    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/tensorflow/python/client/session.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20412">
-          <caret line="1151" column="0" lean-forward="false" selection-start-line="1151" selection-start-column="0" selection-end-line="1151" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAE_twobranches.py" />
-    <entry file="file://$PROJECT_DIR$/DAE.py" />
-    <entry file="file://$PROJECT_DIR$/visualization.py" />
-    <entry file="file://$PROJECT_DIR$/preprocess.py" />
     <entry file="file://$USER_HOME$/.PyCharmCE2017.3/system/python_stubs/-572095004/numpy/core/umath.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
-          <caret line="3016" column="9" lean-forward="false" selection-start-line="3016" selection-start-column="4" selection-end-line="3016" selection-end-column="9" />
+          <caret line="3016" column="9" selection-start-line="3016" selection-start-column="4" selection-end-line="3016" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/visualization.py" />
-    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/numpy/core/fromnumeric.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="2226" column="41" lean-forward="false" selection-start-line="2226" selection-start-column="33" selection-end-line="2226" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/sklearn/linear_model/base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="143">
-          <caret line="254" column="8" lean-forward="false" selection-start-line="254" selection-start-column="8" selection-end-line="254" selection-end-column="8" />
+          <caret line="254" column="8" selection-start-line="254" selection-start-column="8" selection-end-line="254" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -523,113 +677,257 @@ er2 = []</expression-string>
     <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/tensorflow/python/ops/array_ops.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
-          <caret line="470" column="0" lean-forward="false" selection-start-line="470" selection-start-column="0" selection-end-line="470" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/tensorflow/python/training/optimizer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="394" column="42" lean-forward="false" selection-start-line="394" selection-start-column="28" selection-end-line="394" selection-end-column="42" />
+          <caret line="470" selection-start-line="470" selection-end-line="470" />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/tensorflow/python/ops/control_flow_ops.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
-          <caret line="2910" column="0" lean-forward="false" selection-start-line="2910" selection-start-column="0" selection-end-line="2910" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/tensorflow/python/framework/common_shapes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="675" column="0" lean-forward="false" selection-start-line="675" selection-start-column="0" selection-end-line="675" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/tensorflow/python/ops/variable_scope.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="663" column="0" lean-forward="false" selection-start-line="663" selection-start-column="0" selection-end-line="663" selection-end-column="0" />
+          <caret line="2910" selection-start-line="2910" selection-end-line="2910" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/conergence_ch2_split0.2.png" />
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="1071" column="0" lean-forward="false" selection-start-line="1071" selection-start-column="0" selection-end-line="1071" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/tensorflow/python/client/session.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20412">
-          <caret line="1151" column="0" lean-forward="false" selection-start-line="1151" selection-start-column="0" selection-end-line="1151" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/comp.py" />
     <entry file="file://$PROJECT_DIR$/preprocess.py" />
     <entry file="file://$PROJECT_DIR$/DAE.py" />
     <entry file="file://$PROJECT_DIR$/DAE_raw.py" />
     <entry file="file://$PROJECT_DIR$/DAE_twobranches.py" />
     <entry file="file://$PROJECT_DIR$/code/DAE_twobranches2.py" />
-    <entry file="file://$PROJECT_DIR$/code/DAE_PPN_sig.py">
+    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/matplotlib/pyplot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+        <state relative-caret-position="193">
+          <caret line="3537" column="58" selection-start-line="3537" selection-start-column="49" selection-end-line="3537" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/DAE.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PCA.py" />
+    <entry file="file://$PROJECT_DIR$/script/DAE_PPN_PCA.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="568">
+          <caret line="113" column="47" selection-start-line="113" selection-start-column="47" selection-end-line="113" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/DAE_conv1d.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="73" selection-start-line="60" selection-end-line="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/tensorflow/python/layers/convolutional.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="1206" column="27" selection-start-line="1206" selection-start-column="27" selection-end-line="1206" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/tensorflow/python/ops/gen_math_ops.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="2500" selection-start-line="2500" selection-end-line="2500" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/tensorflow/python/ops/math_ops.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="837" selection-start-line="837" selection-end-line="837" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/tensorflow/contrib/framework/python/ops/variables.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="260" selection-start-line="260" selection-end-line="260" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/tensorflow/python/layers/core.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="117" selection-start-line="117" selection-end-line="117" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/tensorflow/python/layers/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="491" selection-start-line="491" selection-end-line="491" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/tensorflow/contrib/layers/python/layers/layers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="1485" selection-start-line="1485" selection-end-line="1485" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/tensorflow/contrib/framework/python/ops/arg_scope.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3150">
+          <caret line="180" selection-start-line="180" selection-end-line="180" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/DAE_PPN_sig.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1260">
+          <caret line="73" selection-start-line="73" selection-end-line="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/plotting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/numpy/core/fromnumeric.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1278">
+          <caret line="82" selection-start-line="82" selection-end-line="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/DAE_PPN_PCA_repair.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3456">
+          <caret line="195" column="41" selection-start-line="195" selection-start-column="41" selection-end-line="195" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/tensorflow/python/framework/errors_impl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8064">
+          <caret line="459" selection-start-line="459" selection-end-line="459" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="1071" selection-start-line="1071" selection-end-line="1071" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/tensorflow/python/training/optimizer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="506" column="51" selection-start-line="506" selection-start-column="51" selection-end-line="509" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/numpy/core/_methods.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1188">
+          <caret line="74" selection-start-line="74" selection-end-line="74" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/tensorflow/python/framework/ops.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="47862">
+          <caret line="2693" selection-start-line="2693" selection-end-line="2693" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/DAE_PPN_rnn_repair.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1014">
+          <caret line="155" column="29" selection-start-line="155" selection-start-column="29" selection-end-line="155" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SPL_plots.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="35" column="17" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/band_width/band_width_correction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1386">
+          <caret line="77" selection-start-line="77" selection-end-line="77" />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/numpy/lib/npyio.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="383" column="0" lean-forward="false" selection-start-line="383" selection-start-column="0" selection-end-line="383" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="6462">
+          <caret line="383" selection-start-line="383" selection-end-line="383" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PCA.py">
+    <entry file="file://$PROJECT_DIR$/data/band_width/DAE_PPN_bandwidth.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="10" lean-forward="false" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="5634">
+          <caret line="316" column="60" selection-start-line="316" selection-start-column="60" selection-end-line="316" selection-end-column="60" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/DAE.py">
+    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/numpy/core/numeric.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="20" column="12" lean-forward="false" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="9000">
+          <caret line="500" selection-start-line="500" selection-end-line="500" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/DAE_PPN.py">
+    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/tensorflow/python/ops/variable_scope.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="107" column="47" lean-forward="false" selection-start-line="107" selection-start-column="47" selection-end-line="107" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="12924">
+          <caret line="741" selection-start-line="741" selection-end-line="741" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/comp.py">
+    <entry file="file://$PROJECT_DIR$/script/comp.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="39" lean-forward="true" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="360">
+          <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/DAE_downsample.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="54" column="24" lean-forward="true" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/tensorflow/python/framework/common_shapes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="690" selection-start-line="690" selection-end-line="690" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda2/lib/python2.7/site-packages/tensorflow/python/client/session.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="1301" selection-start-line="1301" selection-end-line="1301" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/DAE_PPN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="16" column="46" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
         </state>
       </provider>
     </entry>

@@ -11,15 +11,15 @@ import tensorflow.contrib.slim as slim
 
 def run(ratio):
 	input_data =np.load('./data/noisy_sensor_data.npy').item()
-	test_input = input_data['test_input']
-	test_output = input_data['test_output']
-	train_input = input_data['train_input']
-	train_output = input_data['train_output']
+	test_input = input_data['test_input']#[:,400:1000]
+	test_output = input_data['test_output']#[:,400:1000]
+	train_input = input_data['train_input']#[:,400:1000]
+	train_output = input_data['train_output']#[:,400:1000]
 
 	idx = np.arange(500)
 	np.random.shuffle(idx)
-	train_input=train_input[idx[:200]]
-	train_output=train_output[idx[:200]]
+	train_input=train_input[idx]
+	train_output=train_output[idx]
 
 	train_input_max = []
 	train_output_max = []
@@ -29,17 +29,17 @@ def run(ratio):
 	for i, data_i in enumerate(train_input):
 		# normalize with training data
 		train_input_max += [np.max(data_i)]
-		train_input[i] = (data_i/np.max(data_i) + 1 )/2
+		train_input[i] = data_i/np.max(data_i)
 		data_i = train_output[i]
 		train_output_max += [np.max(data_i)]
-		train_output[i] = (data_i/np.max(data_i) + 1 )/2
+		train_output[i] = data_i/np.max(data_i)
 	for i, data_i in enumerate(test_input):
 		# normalize with testing data
 		test_input_max += [np.max(data_i)]
-		test_input[i] = (data_i/np.max(data_i) + 1 )/2
+		test_input[i] = data_i/np.max(data_i)
 		data_i = test_output[i]
 		test_output_max += [np.max(data_i)]
-		test_output[i] = (data_i/np.max(data_i) + 1 )/2
+		test_output[i] = data_i/np.max(data_i)
 
 	train_input_mag = np.expand_dims(np.asarray(train_input_max),1)
 	train_output_mag = np.expand_dims(np.asarray(train_output_max),1)
@@ -48,12 +48,11 @@ def run(ratio):
 
 
 
-	batch_size = 16
-	num_time_steps = 3000
-	input_pl = tf.placeholder(tf.float32, [batch_size, num_time_steps])
-	output_pl = tf.placeholder(tf.float32, [batch_size, num_time_steps])
-	input_mag_pl = tf.placeholder(tf.float32, [batch_size, 1])
-	output_mag_pl = tf.placeholder(tf.float32, [batch_size, 1])
+	batch_size = 8
+	input_pl = tf.placeholder(tf.float32, [None, test_input.shape[1]])
+	output_pl = tf.placeholder(tf.float32, [None, test_output.shape[1]])
+	input_mag_pl = tf.placeholder(tf.float32, [None, 1])
+	output_mag_pl = tf.placeholder(tf.float32, [None, 1])
 	net = {}
 	net['enc1'] = x = slim.fully_connected(input_pl, 1024, scope='enc/fc1')
 	net['enc2'] = x = slim.fully_connected(x, 1024, scope='enc/fc2')
@@ -66,10 +65,10 @@ def run(ratio):
 	net['dec2'] = x = slim.fully_connected(x, 512, scope='dec/fc2')
 	net['dec3'] = x = slim.fully_connected(x, 1024, scope='dec/fc3')
 	net['dec4'] = x = slim.fully_connected(x, 1024, scope='dec/fc4')
-	net['dec5'] = x = slim.fully_connected(x, 3000, scope='dec/fc5')
-	net['dec6'] = x = slim.fully_connected(x, 3000, activation_fn=None, scope='dec/fc6')
-	net['denoised_presig'] = net['dec6'] #+ input_pl
-	net['denoised'] = tf.sigmoid(net['denoised_presig'])
+	net['dec5'] = x = slim.fully_connected(x, test_output.shape[1], scope='dec/fc5')
+	net['dec6'] = x = slim.fully_connected(x, test_output.shape[1], activation_fn=None, scope='dec/fc6')
+	net['denoised'] = net['dec6'] #+ input_pl
+
 
 
 	net['cls1'] = x = slim.fully_connected(z, 128, scope='ppn/fc1')
@@ -93,11 +92,10 @@ def run(ratio):
 	net['cls4'] = x = slim.fully_connected(x, 1, activation_fn=None, scope='ppn/fc42')
 	net['mag'] = x+input_mag_pl
 
-	loss_xent = tf.nn.sigmoid_cross_entropy_with_logits(labels=output_pl, logits=net['denoised_presig'])
 	loss_l2 = tf.reduce_mean(tf.abs(net['denoised'] - output_pl))
-	loss_l1 = tf.Variable(0.)#tf.reduce_max(tf.abs(net['denoised'] - output_pl))#
+	loss_l1 = tf.reduce_max(tf.abs(net['denoised'] - output_pl))#tf.Variable(0.)#
 	loss_mag = tf.reduce_mean(tf.abs( (net['mag'] - output_mag_pl)))
-	loss_main = loss_xent + loss_l1
+	loss_main = loss_l2 + loss_l1
 
 	## OPTIMIZER ## note: both optimizer and learning rate is not found in the paper
 	main_optimizer = tf.train.AdamOptimizer(1e-3, beta1=0.5)
@@ -106,7 +104,7 @@ def run(ratio):
 	ppn_vars = tf.get_collection(tf.GraphKeys.VARIABLES, scope='ppn')
 	main_grads = main_optimizer.compute_gradients(loss_main, enc_vars+dec_vars)
 	main_train_op = main_optimizer.apply_gradients(main_grads)
-	ppn_optimizer = tf.train.AdamOptimizer(1e-2, beta1=0.5)
+	ppn_optimizer = tf.train.AdamOptimizer(1e-4, beta1=0.5)
 	ppn_grads = ppn_optimizer.compute_gradients(loss_mag, ppn_vars)
 	ppn_train_op = ppn_optimizer.apply_gradients(ppn_grads)
 	train_op = tf.group(main_train_op, ppn_train_op)
@@ -123,7 +121,7 @@ def run(ratio):
 	sess.run(init)
 
 
-	max_epoch = 2000
+	max_epoch = 400
 	train_loss_l1_val_hist = []
 	test_loss_l1_val_hist = []
 	train_loss_l2_val_hist = []
@@ -175,61 +173,77 @@ def run(ratio):
 
 		print(eq_i, np.mean(ave_loss_l1_val_train), np.mean(ave_loss_l1_val_test), np.mean(ave_loss_l2_val_train), np.mean(ave_loss_l2_val_test), np.mean(ave_loss_mag_val_train), np.mean(ave_loss_mag_val_test))
 
-		er1 = []
-		er2 = []
-		for i in range(10):
-			input_data_val = test_input[i * batch_size:(i + 1) * batch_size]
-			denoised_data_val = sess.run(net['denoised'], {input_pl: input_data_val})
-			denoised_mag_val = sess.run(net['mag'], {input_pl: input_data_val,
-													 input_mag_pl: test_input_mag[i * batch_size:(i + 1) * batch_size]})
-			denoised_data_val = (denoised_data_val*2-1) * denoised_mag_val
-			reference_data_val = test_output[i * batch_size:(i + 1) * batch_size] * test_output_mag[
-																					i * batch_size:(i + 1) * batch_size]
-			er1 += [np.abs(denoised_mag_val - test_output_mag[i * batch_size:(i + 1) * batch_size]) / np.abs(
-				test_output_mag[i * batch_size:(i + 1) * batch_size])]
-			er2 += [np.sum(np.abs(denoised_data_val - reference_data_val), 1) / np.max(reference_data_val, 1)]
+
+		input_data_val = test_input
+		denoised_data_val = sess.run(net['denoised'], {input_pl: input_data_val})
+		denoised_mag_val = sess.run(net['mag'], {input_pl: input_data_val, input_mag_pl: test_input_mag})
+		denoised_data_val = denoised_data_val * denoised_mag_val
+		reference_data_val = test_output * test_output_mag
+		er1 = np.abs(denoised_mag_val - test_output_mag) / np.abs(test_output_mag)
+		er2 = np.sum(np.abs(denoised_data_val - reference_data_val), 1) / np.max(reference_data_val, 1)
 		print(np.mean(er1), np.mean(er2))
 
-	plt.figure()
-	plt.subplot(3,1,1)
-	plt.plot(train_loss_l2_val_hist[3:], label='training l2 loss')
-	plt.plot(test_loss_l2_val_hist[3:], label='testing l2 loss')
-	plt.legend()
-	plt.subplot(3,1,2)
-	plt.plot(train_loss_l1_val_hist[3:], label='training l1 loss')
-	plt.plot(test_loss_l1_val_hist[3:], label='testing l1 loss')
-	plt.legend()
-	plt.show()
-	plt.subplot(3,1,3)
-	plt.plot(train_loss_mag_val_hist[3:], label='training mag loss')
-	plt.plot(test_loss_mag_val_hist[3:], label='testing mag loss')
-	plt.legend()
-	plt.show()
+	# plt.figure()
+	# plt.subplot(3,1,1)
+	# plt.plot(train_loss_l2_val_hist[3:], label='training l2 loss')
+	# plt.plot(test_loss_l2_val_hist[3:], label='testing l2 loss')
+	# plt.legend()
+	# plt.subplot(3,1,2)
+	# plt.plot(train_loss_l1_val_hist[3:], label='training l1 loss')
+	# plt.plot(test_loss_l1_val_hist[3:], label='testing l1 loss')
+	# plt.legend()
+	# plt.show()
+	# plt.subplot(3,1,3)
+	# plt.plot(train_loss_mag_val_hist[3:], label='training mag loss')
+	# plt.plot(test_loss_mag_val_hist[3:], label='testing mag loss')
+	# plt.legend()
+	# plt.show()
 
-	#plt.plot(sess.run(net['output'], feed_dict_train)[idx], label='true')
-	i = 0
-	input_data_val = test_input[i*batch_size:(i+1)*batch_size]
-	input_mag_val = test_input_mag[i*batch_size:(i+1)*batch_size]
-	residual_data_val = sess.run(net['denoised'], {input_pl: input_data_val})
-	denoised_data_val = sess.run(net['denoised'], {input_pl: input_data_val})
-	denoised_mag_val = sess.run(net['mag'], {input_pl: input_data_val, input_mag_pl: input_mag_val})
-	reference_data_val = test_output[i*batch_size:(i+1)*batch_size]
+	# testing
+	test_data = {'input_data': [], 'pred_data': [], 'output_data': []}
+	denoised_data_val = sess.run(net['denoised'], {input_pl: test_input})
+	denoised_mag_val = sess.run(net['mag'], {input_pl: test_input,input_mag_pl: test_input_mag})
+	denoised_data_val = denoised_data_val * denoised_mag_val
+	reference_data_val = test_output * test_output_mag
+	test_data['input_data'] = test_input
+	test_data['pred_data'] = denoised_data_val
+	test_data['output_data'] = reference_data_val
+	np.save('calibrated_broken_test_data',test_data)
+	# training
+	train_data = {'input_data': [], 'pred_data': [], 'output_data': []}
+	denoised_data_val = sess.run(net['denoised'], {input_pl: train_input})
+	denoised_mag_val = sess.run(net['mag'], {input_pl: train_input,input_mag_pl: train_input_mag})
+	denoised_data_val = denoised_data_val * denoised_mag_val
+	reference_data_val = train_output * train_output_mag
+	train_data['input_data'] = train_input
+	train_data['pred_data'] = denoised_data_val
+	train_data['output_data'] = reference_data_val
+	np.save('calibrated_broken_train_data',train_data)
 
-	if 1:
-		test_max_val = test_input_mag[i*batch_size:(i+1)*batch_size,0:1]
-		test_min_val = test_input_mag[i*batch_size:(i+1)*batch_size,1:]
-		input_data_val = (input_data_val) * (test_max_val - test_min_val)  + test_min_val
-		test_max_val = denoised_mag_val[:,0:1]
-		test_min_val = denoised_mag_val[:,1:]
-		residual_data_val = (residual_data_val) * (test_max_val - test_min_val)  + test_min_val
-		denoised_data_val = (denoised_data_val) * (test_max_val - test_min_val)  + test_min_val
-		test_max_val = test_output_mag[i*batch_size:(i+1)*batch_size,0:1]
-		test_min_val = test_output_mag[i*batch_size:(i+1)*batch_size,1:]
-		reference_data_val = (reference_data_val) * (test_max_val - test_min_val)  + test_min_val
-
-	np.save('input_data_val_ch2.npy', input_data_val)
-	np.save('output_data_val_ch2.npy', reference_data_val)
-	np.save('denoised_data_val_ch2.npy', denoised_data_val)
+	# #plt.plot(sess.run(net['output'], feed_dict_train)[idx], label='true')
+	# i = 0
+	# input_data_val = test_input[i*batch_size:(i+1)*batch_size]
+	# input_mag_val = test_input_mag[i*batch_size:(i+1)*batch_size]
+	# residual_data_val = sess.run(net['denoised'], {input_pl: input_data_val})
+	# denoised_data_val = sess.run(net['denoised'], {input_pl: input_data_val})
+	# denoised_mag_val = sess.run(net['mag'], {input_pl: input_data_val, input_mag_pl: input_mag_val})
+	# reference_data_val = test_output[i*batch_size:(i+1)*batch_size]
+	#
+	# if 1:
+	# 	test_max_val = test_input_mag[i*batch_size:(i+1)*batch_size,0:1]
+	# 	test_min_val = test_input_mag[i*batch_size:(i+1)*batch_size,1:]
+	# 	input_data_val = (input_data_val) * (test_max_val - test_min_val)  + test_min_val
+	# 	test_max_val = denoised_mag_val[:,0:1]
+	# 	test_min_val = denoised_mag_val[:,1:]
+	# 	residual_data_val = (residual_data_val) * (test_max_val - test_min_val)  + test_min_val
+	# 	denoised_data_val = (denoised_data_val) * (test_max_val - test_min_val)  + test_min_val
+	# 	test_max_val = test_output_mag[i*batch_size:(i+1)*batch_size,0:1]
+	# 	test_min_val = test_output_mag[i*batch_size:(i+1)*batch_size,1:]
+	# 	reference_data_val = (reference_data_val) * (test_max_val - test_min_val)  + test_min_val
+	#
+	# np.save('input_data_val_ch3.npy', input_data_val)
+	# np.save('output_data_val_ch3.npy', reference_data_val)
+	# np.save('denoised_data_val_ch3.npy', denoised_data_val)
 
 	for idx in range(5):
 		plt.figure(figsize=(7,15))
@@ -237,7 +251,7 @@ def run(ratio):
 		plt.plot(input_data_val[idx],label='bad sensor')
 		plt.legend()
 		plt.subplot(5,1,2)
-		plt.plot(residual_data_val[idx], label='residual sensor')
+		# plt.plot(residual_data_val[idx], label='residual sensor')
 		plt.legend()
 		plt.subplot(5,1,3)
 		plt.plot(denoised_data_val[idx], label='denoised signal')

@@ -15,8 +15,8 @@ for dir_i in os.listdir(data_dir):
 		ch3_dir = os.path.join(data_dir, dir_i, 'Chanel3')
 		for fn_i in os.listdir(ch1_dir):
 			ch1_fn = os.path.join(ch1_dir, fn_i)
-			ch2_fn = os.path.join(ch2_dir, fn_i)				
-			ch3_fn = os.path.join(ch3_dir, fn_i)				
+			ch2_fn = os.path.join(ch2_dir, fn_i)
+			ch3_fn = os.path.join(ch3_dir, fn_i)
 			if os.path.exists(ch2_fn) and os.path.exists(ch3_fn):
 				ch1_data_i = sio.loadmat(ch1_fn)['data1_fil_maw']
 				ch2_data_i = sio.loadmat(ch2_fn)['data2_fil_maw']
@@ -32,8 +32,8 @@ for dir_i in os.listdir(data_dir):
 					plt.show()
 			else:
 				print('error in {} {}'.format(dir_ij, fn_i))
-							
-	
+
+
 np.save('ch2_data.npy', ch2_data)
 np.save('ch3_data.npy', ch3_data)
 np.save('ch1_data.npy', ch1_data)

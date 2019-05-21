@@ -8,18 +8,15 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 import numpy as np
 import tensorflow as tf
 import tensorflow.contrib.slim as slim
+from sklearn.decomposition import PCA
 
 def run(ratio):
-	input_data =np.load('./data/noisy_sensor_data.npy').item()
+	input_data = np.load('data_rnn0.npy').item() #./data/broken_sensor_data
 	test_input = input_data['test_input']
 	test_output = input_data['test_output']
 	train_input = input_data['train_input']
 	train_output = input_data['train_output']
 
-	idx = np.arange(500)
-	np.random.shuffle(idx)
-	train_input=train_input[idx[:200]]
-	train_output=train_output[idx[:200]]
 
 	train_input_max = []
 	train_output_max = []
@@ -46,66 +43,100 @@ def run(ratio):
 	test_input_mag = np.expand_dims(np.asarray(test_input_max),1)
 	test_output_mag = np.expand_dims(np.asarray(test_output_max),1)
 
+	if 0:
+		pca = PCA(n_components=500)
+		pca.fit(train_input)
+		train_input = pca.transform(train_input)
+		test_input = pca.transform(test_input)
 
 
 	batch_size = 16
 	num_time_steps = 3000
 	input_pl = tf.placeholder(tf.float32, [batch_size, num_time_steps])
-	output_pl = tf.placeholder(tf.float32, [batch_size, num_time_steps])
+	output_pl = tf.placeholder(tf.float32, [batch_size, 3000])
 	input_mag_pl = tf.placeholder(tf.float32, [batch_size, 1])
 	output_mag_pl = tf.placeholder(tf.float32, [batch_size, 1])
 	net = {}
-	net['enc1'] = x = slim.fully_connected(input_pl, 1024, scope='enc/fc1')
-	net['enc2'] = x = slim.fully_connected(x, 1024, scope='enc/fc2')
-	net['enc3'] = x = slim.fully_connected(x, 512, scope='enc/fc3')
-	net['enc4'] = x = slim.fully_connected(x, 512, scope='enc/fc4')
-	net['enc5'] = x = slim.fully_connected(x, 256, scope='enc/fc5')
-	net['enc6'] = x = slim.fully_connected(x, 256, scope='enc/fc6')
-	z = x
-	net['dec1'] = x = slim.fully_connected(x, 512, scope='dec/fc1')
-	net['dec2'] = x = slim.fully_connected(x, 512, scope='dec/fc2')
-	net['dec3'] = x = slim.fully_connected(x, 1024, scope='dec/fc3')
-	net['dec4'] = x = slim.fully_connected(x, 1024, scope='dec/fc4')
-	net['dec5'] = x = slim.fully_connected(x, 3000, scope='dec/fc5')
-	net['dec6'] = x = slim.fully_connected(x, 3000, activation_fn=None, scope='dec/fc6')
-	net['denoised'] = net['dec6'] #+ input_pl
+	with tf.variable_scope('enc') as scope:
+		x = slim.fully_connected(input_pl, 1024)#tf.layers.batch_normalization(
+		#x = tf.layers.batch_normalization(x)#
+		# x = slim.fully_connected(x, 256)
+		x = slim.fully_connected(x, 128)
+		#x = tf.layers.batch_normalization(x)
+		# x = slim.fully_connected(x, 64)
+		#x = slim.fully_connected(x, 32)
+		z = x = slim.fully_connected(x, 32)
+	if 1:
+		with tf.variable_scope('dec') as scope:
+			#x = tf.layers.dense(x, 256)
+			# x = tf.layers.dense(x, 256)
+			#x = tf.layers.dense(x, 512)
+			x = tf.layers.dense(x, 1024)
+			#x = tf.layers.batch_normalization(x)
+			# x = tf.layers.dense(x, 3000)
+			#x = tf.layers.batch_normalization(x)
+			x = tf.layers.dense(x, 3000, activation=None)
+			#x = x + input_pl
+	else:
+		with tf.variable_scope('dec') as scope:
+			x = tf.expand_dims(tf.expand_dims(x, -1), -1)
+			x = tf.layers.conv2d_transpose(x, 128, (3, 1), strides=(2, 1), padding='same')
+			x = tf.layers.conv2d_transpose(x, 128, (3, 1), strides=(1, 1), padding='same')
+			x = tf.layers.conv2d_transpose(x, 64, (3, 1), strides=(2, 1), padding='same')
+			x = tf.layers.conv2d_transpose(x, 64, (3, 1), strides=(1, 1), padding='same')
+			x = tf.layers.conv2d_transpose(x, 32, (3, 1), strides=(2, 1), padding='same')
+			x = tf.layers.conv2d_transpose(x, 32, (3, 1), strides=(1, 1), padding='same')
+			x = tf.layers.conv2d_transpose(x, 16, (3, 1), strides=(2, 1), padding='same')
+			x = tf.layers.conv2d_transpose(x, 16, (3, 1), strides=(1, 1), padding='same')
+			x = tf.layers.conv2d_transpose(x, 8, (3, 1), strides=(2, 1), padding='same')
+			x = tf.layers.conv2d_transpose(x, 8, (3, 1), strides=(1, 1), padding='same')
+			x = tf.layers.conv2d_transpose(x, 4, (3, 1), strides=(2, 1), padding='same')
+			x = tf.layers.conv2d_transpose(x, 4, (3, 1), strides=(1, 1), padding='same')
+			x = tf.layers.conv2d_transpose(x, 2, (3, 1), strides=(2, 1), activation=None, padding='same')
+			x = tf.layers.conv2d_transpose(x, 2, (3, 1), strides=(1, 1), activation=None, padding='same')
+			x = tf.layers.conv2d_transpose(x, 1, (3, 1), activation=None, padding='same')
+
+	net['logits'] = tf.squeeze(x)[:,:3000]
+	net['denoised'] = tf.squeeze(tf.sigmoid(x))[:,:3000]*2-1 #+ input_pl
 
 
-
-	net['cls1'] = x = slim.fully_connected(z, 128, scope='ppn/fc1')
-	net['cls11'] = x = slim.fully_connected(x, 128, scope='ppn/fc11')
+	net['cls1'] = x = slim.fully_connected(z, 16, scope='ppn/fc1')
+	# net['cls11'] = x = slim.fully_connected(x, 16, scope='ppn/fc11')
 	# extra = tf.tile(input_mag_pl, (1,32))
 	# extra = tf.concat([net['cls1'], extra], 1)
-	net['cls2'] = x = slim.fully_connected(x, 32, scope='ppn/fc2')
-	net['cls21'] = x = slim.fully_connected(x, 32, scope='ppn/fc21')
+	net['cls2'] = x = slim.fully_connected(x, 8, scope='ppn/fc2')
+	# net['cls21'] = x = slim.fully_connected(x, 8, scope='ppn/fc21')
 	# extra = tf.tile(input_mag_pl, (1,8))
 	# extra = tf.concat([net['cls2'], extra], 1)
 	# extra = net['cls2']
-	net['cls3'] = x = slim.fully_connected(x, 8, scope='ppn/fc3')
+	# net['cls3'] = x = slim.fully_connected(x, 8, scope='ppn/fc3')
 	x = tf.concat([x, input_mag_pl], 1)
 	net['cls31'] = x = slim.fully_connected(x, 8, scope='ppn/fc31')
-	net['cls32'] = x = slim.fully_connected(x, 8, scope='ppn/fc32')
+	# net['cls32'] = x = slim.fully_connected(x, 8, scope='ppn/fc32')
 	# extra = tf.tile(input_mag_pl, (1,2))
 	# extra = tf.concat([net['cls3'], extra], 1)
 	# extra = net['cls3']
+	x = tf.concat([x, input_mag_pl], 1)
 	net['cls4'] = x = slim.fully_connected(x, 4, scope='ppn/fc4')
+	x = tf.concat([x, input_mag_pl], 1)
 	net['cls4'] = x = slim.fully_connected(x, 2, activation_fn=None, scope='ppn/fc41')
 	net['cls4'] = x = slim.fully_connected(x, 1, activation_fn=None, scope='ppn/fc42')
 	net['mag'] = x+input_mag_pl
 
+	loss_xent = tf.nn.sigmoid_cross_entropy_with_logits(labels=(output_pl+1)/2., logits=net['logits'])
 	loss_l2 = tf.reduce_mean(tf.abs(net['denoised'] - output_pl))
-	loss_l1 = tf.Variable(0.)#tf.reduce_max(tf.abs(net['denoised'] - output_pl))#
+	loss_l1 = tf.reduce_max(tf.abs(net['denoised'] - output_pl))#tf.Variable(0.)#
 	loss_mag = tf.reduce_mean(tf.abs( (net['mag'] - output_mag_pl)))
-	loss_main = loss_l2 + loss_l1
+	loss_main = loss_xent + loss_l1
 
 	## OPTIMIZER ## note: both optimizer and learning rate is not found in the paper
-	main_optimizer = tf.train.AdamOptimizer(1e-2, beta1=0.5)
+	main_optimizer = tf.train.AdamOptimizer(1e-3, beta1=0.5)
 	enc_vars = tf.get_collection(tf.GraphKeys.VARIABLES, scope='enc')
 	dec_vars = tf.get_collection(tf.GraphKeys.VARIABLES, scope='dec')
 	ppn_vars = tf.get_collection(tf.GraphKeys.VARIABLES, scope='ppn')
 	main_grads = main_optimizer.compute_gradients(loss_main, enc_vars+dec_vars)
 	main_train_op = main_optimizer.apply_gradients(main_grads)
-	ppn_optimizer = tf.train.AdamOptimizer(1e-3, beta1=0.5)
+	ppn_optimizer = tf.train.AdamOptimizer(1e-4, beta1=0.5)
 	ppn_grads = ppn_optimizer.compute_gradients(loss_mag, ppn_vars)
 	ppn_train_op = ppn_optimizer.apply_gradients(ppn_grads)
 	train_op = tf.group(main_train_op, ppn_train_op)
@@ -138,25 +169,23 @@ def run(ratio):
 		ave_loss_l2_val_train = []
 		ave_loss_mag_val_train = []
 		for i in range(num_itr):
-			#np.save('train_input_mag',train_input_mag[i*batch_size:(i+1)*batch_size])
-			#np.save('train_output_mag',train_output_mag[i*batch_size:(i+1)*batch_size])
-			#exit(0)
 			feed_dict_train = {input_pl: train_input[i*batch_size:(i+1)*batch_size],
-						 output_pl: train_output[i*batch_size:(i+1)*batch_size],
-                         input_mag_pl: train_input_mag[i*batch_size:(i+1)*batch_size],
-                         output_mag_pl: train_output_mag[i*batch_size:(i+1)*batch_size],
-                          }
+                               output_pl: train_output[i*batch_size:(i+1)*batch_size],
+                               input_mag_pl: train_input_mag[i*batch_size:(i+1)*batch_size],
+                               output_mag_pl: train_output_mag[i*batch_size:(i+1)*batch_size],
+                               }
 			loss_l2_val, loss_l1_val, loss_mag_val, _ = sess.run([loss_l2, loss_l1, loss_mag, train_op], feed_dict_train)
 			ave_loss_l1_val_train += [loss_l1_val]
 			ave_loss_l2_val_train += [loss_l2_val]
 			ave_loss_mag_val_train += [loss_mag_val]
+		ave_loss_l1_val_test = []
+		ave_loss_l2_val_test = []
+		ave_loss_mag_val_test = []
+
 		train_loss_l1_val_hist += [np.mean(ave_loss_l1_val_train)]
 		train_loss_l2_val_hist += [np.mean(ave_loss_l2_val_train)]
 		train_loss_mag_val_hist += [np.mean(ave_loss_mag_val_train)]
 		# testing data
-		ave_loss_l1_val_test = []
-		ave_loss_l2_val_test = []
-		ave_loss_mag_val_test = []
 		num_itr = test_input.shape[0] / batch_size
 		for i in range(num_itr):
 			feed_dict_test = {input_pl: test_input[i*batch_size:(i+1)*batch_size],
@@ -172,7 +201,7 @@ def run(ratio):
 		test_loss_l2_val_hist += [np.mean(ave_loss_l2_val_test)]
 		test_loss_mag_val_hist += [np.mean(ave_loss_mag_val_test)]
 
-		print(eq_i, np.mean(ave_loss_l1_val_train), np.mean(ave_loss_l1_val_test), np.mean(ave_loss_l2_val_train), np.mean(ave_loss_l2_val_test), np.mean(ave_loss_mag_val_train), np.mean(ave_loss_mag_val_test))
+		#print(eq_i, np.mean(ave_loss_l1_val_train), np.mean(ave_loss_l1_val_test), np.mean(ave_loss_l2_val_train), np.mean(ave_loss_l2_val_test), np.mean(ave_loss_mag_val_train), np.mean(ave_loss_mag_val_test))
 
 		er1 = []
 		er2 = []

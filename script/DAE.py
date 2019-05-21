@@ -38,7 +38,7 @@ def run(ratio):
 	loss = loss_l2 + loss_l1 #max error regularizer
 
 	## OPTIMIZER ## note: both optimizer and learning rate is not found in the paper
-	optimizer = tf.train.AdamOptimizer(1e-5, beta1=0.5)
+	optimizer = tf.train.AdamOptimizer(1e-4, beta1=0.5)
 	grads = optimizer.compute_gradients(loss, tf.all_variables())
 	train_op = optimizer.apply_gradients(grads)
 

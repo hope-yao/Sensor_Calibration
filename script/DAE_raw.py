@@ -10,22 +10,31 @@ os.environ['CUDA_DEVICE_ORDER'] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 
 def run(ratio):
-	input_data =np.load('noisy_sensor_data.npy').item()
-	test_input = input_data['test_input']
-	test_output = input_data['test_output']
-	train_input = input_data['train_input']
-	train_output = input_data['train_output']
+	rate = '5k'
+	train_input_data = np.load('./data/spl/data12/sampled_train_data.npy').item()
+	train_input = train_input_data[rate]
+	test_input_data = np.load('./data/spl/data12/sampled_test_data.npy').item()
+	test_input = test_input_data[rate]
+	output_data = np.load('./data/noisy_sensor_data.npy').item()
+	test_output = output_data['test_output']
+	train_output = output_data['train_output']
 
-	test_input = np.asarray(test_input)
-	test_output = np.asarray(test_output)
-	train_input = np.asarray(train_input)
-	train_output = np.asarray(train_output)
+	# input_data =np.load('noisy_sensor_data.npy').item()
+	# test_input = input_data['test_input']
+	# test_output = input_data['test_output']
+	# train_input = input_data['train_input']
+	# train_output = input_data['train_output']
+	#
+	# test_input = np.asarray(test_input)
+	# test_output = np.asarray(test_output)
+	# train_input = np.asarray(train_input)
+	# train_output = np.asarray(train_output)
 
 
 	batch_size = 16
 	num_time_steps = 3000
 	dim_out = 1
-	input_pl = tf.placeholder(tf.float32, [batch_size, num_time_steps])
+	input_pl = tf.placeholder(tf.float32, [batch_size, train_input.shape[1]])
 	output_pl = tf.placeholder(tf.float32, [batch_size, num_time_steps])
 	net = {}
 	net['enc1'] = slim.fully_connected(input_pl, 1024, scope='enc/fc1')
@@ -44,7 +53,7 @@ def run(ratio):
 	net['denoised'] = net['residual'] #+ input_pl
 	loss_l2 = tf.reduce_mean(tf.abs(net['denoised'] - output_pl))
 	loss_l1 = tf.reduce_max(tf.abs(net['denoised'] - output_pl))
-	loss = loss_l2 + loss_l1 #max error regularizer
+	loss = loss_l2 #+ loss_l1 #max error regularizer
 
 	## OPTIMIZER ## note: both optimizer and learning rate is not found in the paper
 	optimizer = tf.train.AdamOptimizer(1e-4, beta1=0.5)
@@ -63,7 +72,7 @@ def run(ratio):
 	sess.run(init)
 
 
-	max_epoch = 2000
+	max_epoch = 500
 	train_loss_l1_val_hist = []
 	test_loss_l1_val_hist = []
 	train_loss_l2_val_hist = []
@@ -106,46 +115,46 @@ def run(ratio):
 			er2 += [np.sum(np.abs(denoised_data_val - reference_data_val), 1) / np.max(reference_data_val, 1)]
 		print(np.mean(er1), np.mean(er2))
 
-	plt.figure()
-	plt.subplot(2,1,1)
-	plt.plot(train_loss_l2_val_hist[3:], label='training l2 loss')
-	plt.plot(test_loss_l2_val_hist[3:], label='testing l2 loss')
-	plt.legend()
-	plt.subplot(2,1,2)
-	plt.plot(train_loss_l1_val_hist[3:], label='training l1 loss')
-	plt.plot(test_loss_l1_val_hist[3:], label='testing l1 loss')
-	plt.legend()
-	plt.show()
-
-	#plt.plot(sess.run(net['output'], feed_dict_train)[idx], label='true')
-	i = 0
-	input_data_val = test_input[i*batch_size:(i+1)*batch_size]
-	residual_data_val = sess.run(net['residual'], {input_pl: input_data_val})
-	denoised_data_val = sess.run(net['denoised'], {input_pl: input_data_val})
-	reference_data_val = test_output[i*batch_size:(i+1)*batch_size]
-
-	np.save('input_data_val_ch2.npy', input_data_val)
-	np.save('output_data_val_ch2.npy', reference_data_val)
-	np.save('denoised_data_val_ch2.npy', denoised_data_val)
-
-	for idx in range(5):
-		plt.figure(figsize=(7,15))
-		plt.subplot(5,1,1)
-		plt.plot(input_data_val[idx],label='bad sensor')
-		plt.legend()
-		plt.subplot(5,1,2)
-		plt.plot(residual_data_val[idx], label='residual sensor')
-		plt.legend()
-		plt.subplot(5,1,3)
-		plt.plot(denoised_data_val[idx], label='denoised signal')
-		plt.legend()
-		plt.subplot(5,1,4)
-		plt.plot(reference_data_val[idx], label='good sensor')
-		plt.legend()
-		plt.subplot(5,1,5)
-		plt.plot(reference_data_val[idx]-denoised_data_val[idx], label='error')
-		plt.legend()
-	plt.show()
+	# plt.figure()
+	# plt.subplot(2,1,1)
+	# plt.plot(train_loss_l2_val_hist[3:], label='training l2 loss')
+	# plt.plot(test_loss_l2_val_hist[3:], label='testing l2 loss')
+	# plt.legend()
+	# plt.subplot(2,1,2)
+	# plt.plot(train_loss_l1_val_hist[3:], label='training l1 loss')
+	# plt.plot(test_loss_l1_val_hist[3:], label='testing l1 loss')
+	# plt.legend()
+	# plt.show()
+	#
+	# #plt.plot(sess.run(net['output'], feed_dict_train)[idx], label='true')
+	# i = 0
+	# input_data_val = test_input[i*batch_size:(i+1)*batch_size]
+	# residual_data_val = sess.run(net['residual'], {input_pl: input_data_val})
+	# denoised_data_val = sess.run(net['denoised'], {input_pl: input_data_val})
+	# reference_data_val = test_output[i*batch_size:(i+1)*batch_size]
+	#
+	# np.save('input_data_val_ch2.npy', input_data_val)
+	# np.save('output_data_val_ch2.npy', reference_data_val)
+	# np.save('denoised_data_val_ch2.npy', denoised_data_val)
+	#
+	# for idx in range(5):
+	# 	plt.figure(figsize=(7,15))
+	# 	plt.subplot(5,1,1)
+	# 	plt.plot(input_data_val[idx],label='bad sensor')
+	# 	plt.legend()
+	# 	plt.subplot(5,1,2)
+	# 	plt.plot(residual_data_val[idx], label='residual sensor')
+	# 	plt.legend()
+	# 	plt.subplot(5,1,3)
+	# 	plt.plot(denoised_data_val[idx], label='denoised signal')
+	# 	plt.legend()
+	# 	plt.subplot(5,1,4)
+	# 	plt.plot(reference_data_val[idx], label='good sensor')
+	# 	plt.legend()
+	# 	plt.subplot(5,1,5)
+	# 	plt.plot(reference_data_val[idx]-denoised_data_val[idx], label='error')
+	# 	plt.legend()
+	# plt.show()
 
 if __name__ == '__main__':
 	# for ratio in range(0.,1,10):

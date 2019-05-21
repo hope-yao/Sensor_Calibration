@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="ubuntu">
+    <serverData>
+      <paths name="ubuntu">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/hope-yao/Documents/Sensor_Calibration" local="$USER_HOME$/test" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

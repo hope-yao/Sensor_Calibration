@@ -7,7 +7,7 @@ from sklearn.metrics import mean_squared_error, r2_score
 regr = linear_model.LinearRegression()
 aa=np.load('./data/noisy_sensor_data.npy').item()
 regr.fit(aa['train_input'], aa['train_output'])
-test_output = regr.predict(aa['test_input'])
+test_output = regr.predict(aa['test_input']),
 
 peak_err = np.mean(np.abs(np.max(aa['test_output'],1) - np.max(test_output,1))/np.max(aa['test_output'],1))
 err = np.abs(aa['test_output'] - test_output)
